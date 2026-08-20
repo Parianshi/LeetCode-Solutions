@@ -10,16 +10,15 @@ class MinStack {
     
     public void push(int value) {
         stk.push(value);
-
-        if(minStk.isEmpty() || value <= minStk.peek()){
+        if(minStk.isEmpty() || minStk.peek()>=value){
             minStk.push(value);
-        }
-        
+        } 
     }
     
     public void pop() {
+
         int a=stk.pop();
-        if(minStk.peek()==a){
+        if(a==minStk.peek()){
             minStk.pop();
         }   
     }
@@ -30,7 +29,7 @@ class MinStack {
     }
     
     public int getMin() {
-        return minStk.peek();
+     return minStk.peek();   
     }
 }
 
