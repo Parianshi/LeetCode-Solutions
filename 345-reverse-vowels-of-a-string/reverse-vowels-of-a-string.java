@@ -1,17 +1,17 @@
 class Solution {
     public String reverseVowels(String s) {
-        char []word= s.toCharArray();
+        int n=s.length();
         int start=0;
-        int n= s.length();
         int end= n-1;
         String vowels= "aeiouAEIOU";
+        char [] word= s.toCharArray();
 
-        while(start< end){
+        while(start<end){
             while(start<end && vowels.indexOf(word[start])==-1){
                 start++;
             }
 
-            while(start< end && vowels.indexOf(word[end])==-1){
+            while(start<end && vowels.indexOf(word[end])==-1){
                 end--;
             }
 
@@ -22,7 +22,8 @@ class Solution {
             start++;
             end--;
         }
-        String ans= new String(word);
-        return ans;
+
+        return new String(word);
+        
     }
 }
