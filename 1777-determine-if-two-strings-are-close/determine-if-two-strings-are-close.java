@@ -1,8 +1,10 @@
 class Solution {
     public boolean closeStrings(String word1, String word2) {
-        int m=word1.length();
+        int m= word1.length();
         int n=word2.length();
+
         if(m!=n) return false;
+
         int []freq1= new int[26];
         int []freq2= new int[26];
 
@@ -21,7 +23,7 @@ class Solution {
         for(int i=0;i<26;i++){
             if(freq1[i]!=freq2[i]) return false;
         }
-        return true;
 
+        return true;
     }
 }
