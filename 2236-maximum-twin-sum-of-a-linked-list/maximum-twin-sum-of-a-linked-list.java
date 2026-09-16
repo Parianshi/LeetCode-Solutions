@@ -22,7 +22,7 @@ class Solution {
         ListNode prev=null;
         ListNode curr=slow;
         while(curr!=null){
-            ListNode next= curr.next;
+            ListNode next=curr.next;
             curr.next=prev;
             prev=curr;
             curr=next;
@@ -30,9 +30,8 @@ class Solution {
 
         ListNode first=head;
         ListNode second=prev;
-
         while(second!=null){
-            ans=Math.max(ans, first.val+second.val);
+            ans= Math.max(ans, first.val + second.val);
             first=first.next;
             second=second.next;
         }
