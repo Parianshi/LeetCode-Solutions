@@ -14,19 +14,16 @@
  * }
  */
 class Solution {
+    
     public int sumNumbers(TreeNode root) {
-        return solve(root,0);    
+        return find(root,0);
     }
 
-    public int solve(TreeNode root, int curr){
+    public int find(TreeNode root,int sum){
         if(root==null) return 0;
+         sum = sum*10+ root.val;
+         if(root.left==null && root.right ==null) return sum;
+         return find(root.left,sum) + find(root.right,sum);
 
-        curr=curr*10+root.val;
-        if(root.left==null && root.right==null) return curr;
-
-        int l= solve(root.left,curr);
-        int r= solve(root.right,curr);
-
-        return l+r;
     }
 }
