@@ -16,26 +16,23 @@
 class Solution {
     int idx=0;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return helper(preorder,inorder,0,inorder.length-1);
+        HashMap<Integer,Integer> mp= new HashMap<>();
+        for(int i=0;i<inorder.length;i++)
+             mp.put(inorder[i],i);
+        return helper(preorder,0,preorder.length-1,mp);   
     }
 
-    public TreeNode helper(int []preorder,int []inorder,int start,int end){
+    public TreeNode helper(int []preorder,int start,int end, HashMap<Integer,Integer> mp){
         if(start>end) return null;
-
         int root=preorder[idx++];
+        int idx= mp.get(root);
         TreeNode node= new TreeNode(root);
-        int inorderidx= findIdx(inorder,root);
 
-        node.left= helper(preorder,inorder,start,inorderidx-1);
-        node.right= helper(preorder,inorder,inorderidx+1,end);
+        node.left= helper(preorder,start,idx-1,mp);
+        node.right= helper(preorder,idx+1,end,mp);
 
         return node;
-    }
 
-    public int findIdx(int []inorder, int key){
-        int n=inorder.length;
-        for(int i=0;i<n;i++)
-        if(inorder[i]==key) return i;
-        return -1;
+
     }
 }
