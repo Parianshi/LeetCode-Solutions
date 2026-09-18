@@ -14,22 +14,18 @@
  * }
  */
 class Solution {
-
-    public void find(TreeNode root, List<Integer> ans){
-        if(root==null) return;
-        if(root.left==null && root.right==null){
-            ans.add(root.val);
-        }
-        find(root.left,ans);
-        find(root.right,ans);
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        List<Integer> l1= new ArrayList<>();
+        List<Integer> l2= new ArrayList<>();
+        check(root1,l1);
+        check(root2,l2);
+        return l1.equals(l2);
     }
 
-    
-    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
-        List<Integer> a = new ArrayList<>();
-        List<Integer> b = new ArrayList<>();
-        find(root1,a);
-        find(root2,b);
-        return a.equals(b);
+    public void check(TreeNode root, List<Integer> list){
+        if(root==null) return;
+        if(root.left==null && root.right==null) list.add(root.val);
+        check(root.left,list);
+        check(root.right,list);
     }
 }
