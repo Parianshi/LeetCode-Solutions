@@ -18,7 +18,6 @@ class Solution {
     public int longestZigZag(TreeNode root) {
         // if(root==null) return 0;
         helper(root,true,0);
-        helper(root,false,0);
         return count;
     }
 
